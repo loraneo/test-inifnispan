@@ -1,0 +1,18 @@
+<config xmlns="urn:org:jgroups" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:org:jgroups http://www.jgroups.org/schema/JGroups-3.4.xsd">
+    <TUNNEL gossip_router_hosts="127.0.0.1[12001],127.0.0.1[12002],127.0.0.1[12003]"
+        bind_interface="eth0" bind_port="${jgroups.tcp.port:7800}" />
+    <PING />
+    <MERGE2 />
+    <FD />
+    <VERIFY_SUSPECT />
+    <pbcast.NAKACK2 use_mcast_xmit="false" />
+    <UNICAST3 />
+    <pbcast.STABLE />
+    <pbcast.GMS />
+    <UFC />
+    <MFC />
+    <FRAG2 />
+    <pbcast.STATE_TRANSFER />
+    <pbcast.FLUSH timeout="2000" />
+</config>
