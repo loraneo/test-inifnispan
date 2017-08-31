@@ -1,51 +1,25 @@
 package com.loraneo.test.infinispan;
 
+import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
 
 import org.infinispan.cdi.ConfigureCache;
 import org.infinispan.configuration.cache.Configuration;
-import org.infinispan.configuration.cache.ConfigurationBuilder;
-import org.infinispan.eviction.EvictionStrategy;
+import org.infinispan.manager.EmbeddedCacheManager;
 
+@Dependent
 public class Config {
 
-    /**
-     * <p>
-     * This producer defines the greeting cache configuration.
-     * </p>
-     *
-     * <p>
-     * This cache will have:
-     * <ul>
-     * <li>a maximum of 4 entries</li>
-     * <li>use the strategy LRU for eviction</li>
-     * </ul>
-     * </p>
-     *
-     * @return the greeting cache configuration.
-     */
-    @ConfigureCache("greeting-cache")
-    @Produces
-    public Configuration greetingCache() {
-        return new ConfigurationBuilder().eviction()
-                .strategy(EvictionStrategy.LRU)
-                .build();
-    }
+    @Inject
+    EmbeddedCacheManager embeddedCacheManager;
 
-    /**
-     * <p>
-     * This producer overrides the default cache configuration used by the default cache manager.
-     * </p>
-     *
-     * <p>
-     * The default cache configuration defines that a cache entry will have a lifespan of 60000 ms.
-     * </p>
-     */
     @Produces
-    public Configuration defaultCacheConfiguration() {
-        return new ConfigurationBuilder().expiration()
-                .lifespan(60000l)
-                .build();
+    @EntityCache
+    @ConfigureCache("entity")
+    public Configuration defaultEmbeddedCacheManager() {
+        return embeddedCacheManager.getCacheConfiguration("entity");
+
     }
 
 }

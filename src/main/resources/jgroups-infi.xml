@@ -1,8 +1,7 @@
 <config xmlns="urn:org:jgroups" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="urn:org:jgroups http://www.jgroups.org/schema/JGroups-3.4.xsd">
-    <TUNNEL gossip_router_hosts="127.0.0.1[12001],127.0.0.1[12002],127.0.0.1[12003]"
-        bind_interface="eth0" bind_port="${jgroups.tcp.port:7800}" />
-    <PING />
+    <TUNNEL gossip_router_hosts="127.0.0.1[12001],127.0.0.1[12002],127.0.0.1[12003]" />
+    <PING num_initial_members="2" />    
     <MERGE2 />
     <FD />
     <VERIFY_SUSPECT />

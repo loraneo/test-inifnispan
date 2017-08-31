@@ -15,6 +15,7 @@ import org.infinispan.Cache;
 public class InfinispanTest {
 
     @Inject
+    @EntityCache
     Cache<String, String> cache;
 
     @GET
@@ -22,7 +23,9 @@ public class InfinispanTest {
     @Produces("text/plain")
     public Response getMessage() {
         return Response.ok(cache.keySet()
-                .toString())
+                .toString() + "\n"
+                + cache.values()
+                        .toString())
                 .build();
     }
 

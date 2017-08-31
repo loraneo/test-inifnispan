@@ -1,17 +1,20 @@
 <infinispan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="urn:infinispan:config:8.2 http://www.infinispan.org/schemas/infinispan-config-8.2.xsd"
     xmlns="urn:infinispan:config:8.2">
-    <jgroups
-        transport="org.infinispan.remoting.transport.jgroups.JGroupsTransport">
-        <stack-file name="jgroups-file" path="jgroups.xml" />
-    </jgroups>
-    <cache-container default-cache="default" statistics="true">
-        <transport stack="jgroups-file" />
+    <jgroups >
+        <stack-file name="jgroups-file" path="jgroups-infi.xml"  />
+    </jgroups> 
+    
+           
+    <cache-container default-cache="default" statistics="true">    
+        <transport cluster="jgroups-file" />
         <jmx duplicate-domains="true" />
-        <invalidation-cache-configuration
+        <distributed-cache-configuration
             name="entity" statistics="true" mode="SYNC"
+            
             statistics-available="true">
-            <partition-handling enabled="true"/>
-        </invalidation-cache-configuration>
+            
+            <partition-handling enabled="true" />
+        </distributed-cache-configuration>
     </cache-container>
 </infinispan>
