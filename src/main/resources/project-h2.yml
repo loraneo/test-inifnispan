@@ -1,0 +1,8 @@
+swarm:
+  datasources:
+    data-sources:
+      Example1DS:
+        driver-name: h2
+        connection-url: jdbc:h2:tcp://127.0.0.1/~/test
+        user-name: sa
+        password: 

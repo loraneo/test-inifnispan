@@ -31,6 +31,22 @@ public class JpaTest {
     }
 
     @GET
+    @Path("update/{id}/{name}")
+    @Produces("text/plain")
+    public Long getMessage(@PathParam("id") final Long id,
+                           @PathParam("name") final String name) {
+        final TestEntity te = test.getEm()
+                .find(TestEntity.class,
+                        id);
+        te.setName(name);
+        test.getEm()
+                .persist(te);
+        test.getEm()
+                .flush();
+        return te.getVersion();
+    }
+
+    @GET
     @Path("crate/{name}")
     @Produces("text/plain")
     public Long putMessage(@PathParam("name") final String name) {

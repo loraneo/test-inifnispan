@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 @Transactional
 public class Test {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "user")
     private EntityManager em;
 
     public EntityManager getEm() {
