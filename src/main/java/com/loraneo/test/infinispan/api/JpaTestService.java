@@ -1,4 +1,4 @@
-package com.loraneo.test.infinispan;
+package com.loraneo.test.infinispan.api;
 
 import java.util.ArrayList;
 
@@ -10,16 +10,18 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import com.loraneo.test.infinispan.dal.TestEntityRepository;
 import com.loraneo.test.infinispan.model.Customer;
 import com.loraneo.test.infinispan.model.Request;
+import com.loraneo.test.infinispan.model.TestEntity;
 
 @Transactional
 @ApplicationScoped
 @Path("/jpa")
-public class JpaTest {
+public class JpaTestService {
 
     @Inject
-    Test test;
+    TestEntityRepository test;
 
     @GET
     @Path("get/{id}")

@@ -1,4 +1,4 @@
-package com.loraneo.test.infinispan;
+package com.loraneo.test.infinispan.api;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -10,9 +10,11 @@ import javax.ws.rs.core.Response;
 
 import org.infinispan.Cache;
 
+import com.loraneo.test.infinispan.cache.EntityCache;
+
 @ApplicationScoped
 @Path("/cache")
-public class InfinispanTest {
+public class InfinispanService {
 
     @Inject
     @EntityCache

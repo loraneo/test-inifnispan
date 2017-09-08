@@ -1,4 +1,4 @@
-package com.loraneo.test.infinispan;
+package com.loraneo.test.infinispan.dal;
 
 import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 
 @Dependent
 @Transactional
-public class Test {
+public class TestEntityRepository {
 
     @PersistenceContext(unitName = "user")
     private EntityManager em;

@@ -1,4 +1,4 @@
-package com.loraneo.test.infinispan;
+package com.loraneo.test.infinispan.model;
 
 import java.io.Serializable;
 

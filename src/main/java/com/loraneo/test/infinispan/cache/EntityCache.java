@@ -1,4 +1,4 @@
-package com.loraneo.test.infinispan;
+package com.loraneo.test.infinispan.cache;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

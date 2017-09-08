@@ -1,6 +1,5 @@
 package com.loraneo.test.infinispan;
 
-import java.lang.annotation.Annotation;
 import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Level;
@@ -20,12 +19,10 @@ public class CDILookup {
         super();
     }
 
-    public static <T> T find(final Class<T> type,
-                             final Annotation... qualifiers) {
+    public static <T> T find(final Class<T> type) {
         try {
             final BeanManager beanManager = InitialContext.doLookup("java:comp/BeanManager");
-            final Set<Bean<?>> beans = beanManager.getBeans(type,
-                    qualifiers);
+            final Set<Bean<?>> beans = beanManager.getBeans(type);
             final Bean<?> bean = beanManager.resolve(beans);
             return getBeanInstance(type,
                     beanManager,
@@ -39,10 +36,8 @@ public class CDILookup {
         }
     }
 
-    public static <T> T getOrThrow(final Class<T> type,
-                                   final Annotation... qualifiers) {
-        return Optional.ofNullable(find(type,
-                qualifiers))
+    public static <T> T getOrThrow(final Class<T> type) {
+        return Optional.ofNullable(find(type))
                 .orElseThrow(() -> new RuntimeException("Cant find any bean for class: " + type));
     }
 

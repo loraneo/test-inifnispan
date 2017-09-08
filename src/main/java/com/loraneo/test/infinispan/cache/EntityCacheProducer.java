@@ -1,4 +1,4 @@
-package com.loraneo.test.infinispan;
+package com.loraneo.test.infinispan.cache;
 
 import javax.enterprise.context.Dependent;
 import javax.enterprise.inject.Produces;
@@ -9,7 +9,7 @@ import org.infinispan.configuration.cache.Configuration;
 import org.infinispan.manager.EmbeddedCacheManager;
 
 @Dependent
-public class Config {
+public class EntityCacheProducer {
 
     @Inject
     EmbeddedCacheManager embeddedCacheManager;
